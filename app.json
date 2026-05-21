@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Ruleta Premios",
+    "slug": "ruleta-premios",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0e0e0e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.ruletapremios"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0e0e0e"
+      },
+      "package": "com.yourcompany.ruletapremios"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
