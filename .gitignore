@@ -1,0 +1,15 @@
+# Expo
+.expo/
+dist/
+web-build/
+
+# Dependencies
+node_modules/
+
+# Temporary files and logs
+*.log
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

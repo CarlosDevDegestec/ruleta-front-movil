@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
-  SafeAreaView,
   ScrollView,
   Text,
   View,
@@ -28,37 +28,40 @@ export default function App() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <StatusBar style="light" />
-      <ScrollView
-        contentContainerStyle={styles.container}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.hero}>
-          <Text style={styles.heroTitle}>¡Gira y Gana!</Text>
-          <Text style={styles.heroSub}>Participa y llévate increíbles premios</Text>
-        </View>
 
-        {loading && (
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator size="large" color={theme.accent} />
-            <Text style={styles.loadingText}>Cargando ruleta...</Text>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.safe}>
+        <StatusBar style="light" />
+        <ScrollView
+          contentContainerStyle={styles.container}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.hero}>
+            <Text style={styles.heroTitle}>¡Gira y Gana!</Text>
+            <Text style={styles.heroSub}>Participa y llévate increíbles premios</Text>
           </View>
+
+          {loading && (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" color={theme.accent} />
+              <Text style={styles.loadingText}>Cargando ruleta...</Text>
+            </View>
+          )}
+
+          {!!error && (
+            <View style={styles.errorBox}>
+              <Text style={styles.errorText}>{error}</Text>
+            </View>
+          )}
+
+          {!loading && !error && <Roulette prizes={prizes} />}
+        </ScrollView>
+
+        {showQuestions && !loading && !error && (
+          <QuestionPopup onComplete={() => setShowQuestions(false)} />
         )}
-
-        {!!error && (
-          <View style={styles.errorBox}>
-            <Text style={styles.errorText}>{error}</Text>
-          </View>
-        )}
-
-        {!loading && !error && <Roulette prizes={prizes} />}
-      </ScrollView>
-
-      {showQuestions && !loading && !error && (
-        <QuestionPopup onComplete={() => setShowQuestions(false)} />
-      )}
-    </SafeAreaView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 

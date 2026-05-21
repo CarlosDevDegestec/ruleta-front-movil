@@ -87,6 +87,7 @@ export default function ClaimFormModal({ prize, onSuccess, onClose }: Props) {
 
             <Text style={styles.fieldLabel}>Teléfono *</Text>
             <TextInput
+              maxLength={12}
               style={styles.input}
               placeholder="Ej: +52 33 1234 5678"
               placeholderTextColor={theme.muted}

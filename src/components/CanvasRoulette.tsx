@@ -41,8 +41,8 @@ export default function CanvasRoulette({ prizes }: Props) {
       const endDeg = startDeg + sliceAngle;
       const midDeg = startDeg + sliceAngle / 2;
 
-      // Text anchor point along the radius, 2/3 out from center
-      const textPos = polarToCartesian(RADIUS * 0.65, midDeg);
+      // Text anchor point along the radius, centered in the active slice area (midway between center disc and outer edge)
+      const textPos = polarToCartesian(RADIUS * 0.58, midDeg);
       const label =
         prize.name.length > 18 ? prize.name.substring(0, 16) + '…' : prize.name;
       const textRotation = midDeg - 90; // align text along the radius
@@ -68,7 +68,8 @@ export default function CanvasRoulette({ prizes }: Props) {
             fill={prize.rarity === 'legendario' ? '#111111' : '#ffffff'}
             fontSize={fontSize}
             fontWeight="bold"
-            textAnchor="end"
+            textAnchor="middle"
+            alignmentBaseline="middle"
             transform={`rotate(${textRotation}, ${textPos.x}, ${textPos.y})`}
           >
             {label}
